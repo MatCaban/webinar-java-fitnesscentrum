@@ -8,31 +8,31 @@ public class Main {
     final static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        final Member basic = new BasicMember("Peter Novak", 1);
-        basic.setMonthsActive(2);
-        final Member premium = new PremiumMember("Anna Svoboda", 2);
-        premium.setMonthsActive(6);
-        final Member vip = new VipMember("Milan Kovac", 3);
-        vip.setMonthsActive(3);
+        final Member basicMember1 = new BasicMember("Peter Novak", 1);
+        basicMember1.setMonthsActive(2);
+        final Member premiumMember1 = new PremiumMember("Anna Svoboda", 2);
+        premiumMember1.setMonthsActive(6);
+        final Member vipMember1 = new VipMember("Milan Kovac", 3);
+        vipMember1.setMonthsActive(3);
 
 
         System.out.println("=== TO STRING() ===");
-        System.out.println(basic);
-        System.out.println(premium);
-        System.out.println(vip);
+        System.out.println(basicMember1);
+        System.out.println(premiumMember1);
+        System.out.println(vipMember1);
 
-        final Member basic1 = new BasicMember("Janko Hrasko", 1);
-        final Member basic2 = new BasicMember("Annamaria Sladkovicova", 1);
+        final Member basicMember2 = new BasicMember("Janko Hrasko", 1);
+        final Member basicMember3 = new BasicMember("Annamaria Sladkovicova", 1);
 
-        final List<Member> allMembers = List.of(basic, basic1, basic2, premium, vip);
+        final List<Member> allMembers = List.of(basicMember2, basicMember3);
 
         System.out.println("\n=== HASHSET UKAZKA ===");
         Set<Member> testSet = new HashSet<>(allMembers);
 
         System.out.println("Velkost listu so vsetkymi membermi: " + allMembers.size());
         System.out.println("HashSet velkost: " + testSet.size());
-        System.out.println("Obsahuje HashSet basic1?: " + testSet.contains(basic1));
-        System.out.println("Obsahuje HashSet basic2?: " + testSet.contains(basic2));
+        System.out.println("Obsahuje HashSet basic1?: " + testSet.contains(basicMember2));
+        System.out.println("Obsahuje HashSet basic2?: " + testSet.contains(basicMember3));
 
 
 
@@ -42,13 +42,13 @@ public class Main {
         ArrayList<Member> premiumMemberList = new ArrayList<>();
         ArrayList<Member> vipMemberList = new ArrayList<>();
 
-        basicMemberList.add(basic);
-        basicMemberList.add(basic1);
-        basicMemberList.add(basic2);
+        basicMemberList.add(basicMember1);
+        basicMemberList.add(basicMember2);
+        basicMemberList.add(basicMember3);
 
-        premiumMemberList.add(premium);
+        premiumMemberList.add(premiumMember1);
 
-        vipMemberList.add(vip);
+        vipMemberList.add(vipMember1);
 
         mapTest.put(MembershipType.BASIC, basicMemberList);
         mapTest.put(MembershipType.PREMIUM, premiumMemberList);
@@ -99,10 +99,10 @@ public class Main {
         System.out.println("Rozdiel v nanosekundach cini: " + (elapsedTimeList - elapsedTimeMap) + " nanosekund.");
 
         System.out.println("\n=== TESTOVANIE EQUALS() VS '==' ===");
-        System.out.println("basic1 equals basic2 -> " + basic1.equals(basic2));
-        System.out.println("basic1 == basic2 -> " + (basic1 == basic2));
-        System.out.println("basic1 hash -> " + basic1.hashCode());
-        System.out.println("basic2 hash -> " + basic2.hashCode());
+        System.out.println("basic1 equals basic2 -> " + basicMember2.equals(basicMember3));
+        System.out.println("basic1 == basic2 -> " + (basicMember2 == basicMember3));
+        System.out.println("basic1 hash -> " + basicMember2.hashCode());
+        System.out.println("basic2 hash -> " + basicMember3.hashCode());
 
         /*
          * vsetky vytvorene triedy dedia z triedy Object, ktora ma definovane
@@ -114,13 +114,13 @@ public class Main {
          * ale kedze neodkazuju na rovnaky objekt, oba su samostatne objekty s vyhradenym miestom v heape,
          * preto basi1 == basic2 vracia false.
          * hashCode() je v Object triede tiez definovay najprisnjsim moznym ekvivalencnym vztahom, cize
-         * rovnako ako equals, objekty maju rovnaky hash len ak odkazuju na rovnaky objekt.
+         * rovnako ako equals, objekty maju rovnaky hash len ak odkazuju na rovnaky objekt (o1 == o2).
          * V triede Member sme prepisali hash tak aby mal hodnotu rovnu ID, vsetky podtriedy triedy Member
          * teda budu mat hashCode rovny ID objektu.
          * */
 
         System.out.println("\n=== POLYMORFIZMUS A TOSTRING() ===");
-        final Member[] membersArray = new Member[]{basic, basic1, basic2, premium, vip};
+        final Member[] membersArray = new Member[]{basicMember1, basicMember2, basicMember3, premiumMember1, vipMember1};
         for (Member member : membersArray) {
             System.out.println("Trieda: " + member.getClass().getSimpleName() + ",\ntoString(): " + member.toString());
         }
