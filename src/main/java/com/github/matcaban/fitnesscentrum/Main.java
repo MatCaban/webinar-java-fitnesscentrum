@@ -122,7 +122,7 @@ public class Main {
         System.out.println("\n=== POLYMORFIZMUS A TOSTRING() ===");
         final Member[] membersArray = new Member[]{basicMember1, basicMember2, basicMember3, premiumMember1, vipMember1};
         for (Member member : membersArray) {
-            System.out.println("Trieda: " + member.getClass().getSimpleName() + ",\ntoString(): " + member.toString());
+            System.out.println("Trieda: " + member.getClass().getSimpleName() + ",\ntoString(): " + member);
         }
 
         System.out.println("\n=== ZORADENIE PODLA MENA ===");
@@ -207,7 +207,7 @@ public class Main {
     }
 
     public static int getCorrectInt(Scanner scanner, String prompt) {
-        int id = 0;
+        int id;
         while (true) {
             System.out.print(prompt);
             try {
@@ -233,7 +233,6 @@ public class Main {
                 return MembershipType.getMembership(membership);
             } else {
                 System.out.println("Nespravny input");
-                continue;
             }
         }
     }
