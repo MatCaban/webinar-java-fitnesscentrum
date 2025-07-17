@@ -15,4 +15,16 @@ public enum MembershipType {
         return this.description;
     }
 
+    public static MembershipType getMembership(String membership) {
+        membership = membership.toLowerCase();
+        switch (membership) {
+            case "basic":
+                return BASIC;
+            case "premium":
+                return PREMIUM;
+            default:
+                return VIP;
+        }
+    }
+
 }

@@ -15,6 +15,10 @@ public abstract class Member {
         this.monthsActive = monthsActive;
     }
 
+    public int getMemberId(){
+        return this.memberId;
+    }
+
     public abstract double calculateMonthlyFee();
 
     public abstract MembershipType getMembershipType();

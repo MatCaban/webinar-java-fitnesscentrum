@@ -1,6 +1,10 @@
 package com.github.matcaban.fitnesscentrum.Members;
 
 public class VipMember extends Member{
+    private final int MONTHLY_FEE = 75;
+    private final int SPA_FEE = 25;
+    private final int PERSONAL_SESSION = 15;
+    private final int MAX_GUESTS = 10;
     private boolean hasSpaAccess;
     private int personalSessionsIncluded;
 
@@ -12,11 +16,11 @@ public class VipMember extends Member{
 
     @Override
     public double calculateMonthlyFee() {
-        int personalSessionsFee = 15 * this.personalSessionsIncluded;
+        int personalSessionsFee = PERSONAL_SESSION * this.personalSessionsIncluded;
         if (hasSpaAccess) {
-            return 75 + 25 + super.calculateLoyaltyDiscount() + personalSessionsFee;
+            return MONTHLY_FEE + SPA_FEE + super.calculateLoyaltyDiscount() + personalSessionsFee;
         } else {
-            return 75 + super.calculateLoyaltyDiscount() + personalSessionsFee;
+            return MONTHLY_FEE + super.calculateLoyaltyDiscount() + personalSessionsFee;
         }
     }
 
@@ -27,7 +31,7 @@ public class VipMember extends Member{
 
     @Override
     public int getMaxGuestPasses() {
-        return 10;
+        return MAX_GUESTS;
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.github.matcaban.fitnesscentrum.Members;
 
 public class BasicMember extends Member{
+    private final int MONTHLY_FEE = 25;
+    private final int MAX_GUESTS = 1;
 
     public BasicMember(String name, int memberId, boolean isActive, int monthsActive) {
         super(name, memberId, isActive, monthsActive);
@@ -8,7 +10,7 @@ public class BasicMember extends Member{
 
     @Override
     public double calculateMonthlyFee() {
-        return 25 * super.calculateLoyaltyDiscount();
+        return this.MONTHLY_FEE * super.calculateLoyaltyDiscount();
     }
 
     @Override
@@ -18,7 +20,7 @@ public class BasicMember extends Member{
 
     @Override
     public int getMaxGuestPasses() {
-        return 1;
+        return this.MAX_GUESTS;
     }
 
     @Override
