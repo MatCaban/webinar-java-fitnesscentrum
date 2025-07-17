@@ -4,8 +4,8 @@ public class BasicMember extends Member{
     private final int MONTHLY_FEE = 25;
     private final int MAX_GUESTS = 1;
 
-    public BasicMember(String name, int memberId, boolean isActive, int monthsActive) {
-        super(name, memberId, isActive, monthsActive);
+    public BasicMember(String name, int memberId) {
+        super(name, memberId);
     }
 
     @Override

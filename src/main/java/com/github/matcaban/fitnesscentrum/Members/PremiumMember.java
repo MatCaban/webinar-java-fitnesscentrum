@@ -4,11 +4,10 @@ public class PremiumMember extends Member{
     private final int MONTHLY_FEE = 45;
     private final int MAX_GUESTS = 3;
     private final int PERSONAL_TRAINER_FEE = 30;
-    private final boolean hasPersonalTrainer;
+    private boolean hasPersonalTrainer;
 
-    public PremiumMember(String name, int memberId, boolean isActive, int monthsActive, boolean hasPersonalTrainer) {
-        super(name, memberId, isActive, monthsActive);
-        this.hasPersonalTrainer = hasPersonalTrainer;
+    public PremiumMember(String name, int memberId) {
+        super(name, memberId);
     }
 
     @Override

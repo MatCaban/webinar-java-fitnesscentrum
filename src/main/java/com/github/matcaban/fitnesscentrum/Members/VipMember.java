@@ -8,10 +8,8 @@ public class VipMember extends Member{
     private boolean hasSpaAccess;
     private int personalSessionsIncluded;
 
-    public VipMember(String name, int memberId, boolean isActive, int monthsActive, boolean hasSpaAccess, int personalSessionsIncluded) {
-        super(name, memberId, isActive, monthsActive);
-        this.hasSpaAccess = hasSpaAccess;
-        this.personalSessionsIncluded = personalSessionsIncluded;
+    public VipMember(String name, int memberId) {
+        super(name, memberId);
     }
 
     @Override

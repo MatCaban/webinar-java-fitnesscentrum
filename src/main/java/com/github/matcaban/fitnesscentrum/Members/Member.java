@@ -8,15 +8,23 @@ public abstract class Member {
     protected boolean isActive;
     protected int monthsActive;
 
-    public Member(String name, int memberId, boolean isActive, int monthsActive) {
+    public Member(String name, int memberId) {
         this.name = name;
         this.memberId = memberId;
-        this.isActive = isActive;
-        this.monthsActive = monthsActive;
+        this.isActive = true;
+        this.monthsActive = 0;
     }
 
     public int getMemberId(){
         return this.memberId;
+    }
+
+    public void setMonthsActive(int monthsActive) {
+        this.monthsActive = monthsActive;
+    }
+
+    public int getMonthsActive() {
+        return monthsActive;
     }
 
     public abstract double calculateMonthlyFee();
@@ -62,13 +70,13 @@ public abstract class Member {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Member)) return false;
         Member member = (Member) o;
         return memberId == member.memberId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(memberId);
+        return memberId;
     }
 }

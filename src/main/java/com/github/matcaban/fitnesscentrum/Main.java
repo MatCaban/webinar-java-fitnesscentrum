@@ -8,9 +8,12 @@ public class Main {
     final static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        final Member basic = new BasicMember("Peter Novak", 1, true, 13);
-        final Member premium = new PremiumMember("Anna Svoboda", 2, true, 14, true);
-        final Member vip = new VipMember("Milan Kovac", 3, true, 5, true, 4);
+        final Member basic = new BasicMember("Peter Novak", 1);
+        basic.setMonthsActive(2);
+        final Member premium = new PremiumMember("Anna Svoboda", 2);
+        premium.setMonthsActive(6);
+        final Member vip = new VipMember("Milan Kovac", 3);
+        vip.setMonthsActive(3);
 
 
         System.out.println("=== TO STRING() ===");
@@ -18,8 +21,8 @@ public class Main {
         System.out.println(premium);
         System.out.println(vip);
 
-        final Member basic1 = new BasicMember("Peter", 1, false, 10);
-        final Member basic2 = new BasicMember("Annamaria", 1, false, 10);
+        final Member basic1 = new BasicMember("Janko Hrasko", 1);
+        final Member basic2 = new BasicMember("Annamaria Sladkovicova", 1);
 
         final List<Member> allMembers = List.of(basic, basic1, basic2, premium, vip);
 
@@ -30,6 +33,7 @@ public class Main {
         System.out.println("HashSet velkost: " + testSet.size());
         System.out.println("Obsahuje HashSet basic1?: " + testSet.contains(basic1));
         System.out.println("Obsahuje HashSet basic2?: " + testSet.contains(basic2));
+
 
 
         System.out.println("\n=== HASHMAP UKAZKA ===");
@@ -122,30 +126,69 @@ public class Main {
         }
 
         System.out.println("\n=== SIMULACIA NOVEHO CLENA ===");
-
+        Set<Member> memberSet = new HashSet<>();
+        Map<Integer, Member> memberDatabase = new HashMap<>();
         boolean endProgram = false;
         while (!endProgram) {
+            System.out.println("\nMenu:");
             System.out.println("1 - pre zadanie noveho clena");
-            System.out.println("2 - pre vypisanie vsetkych clenov");
+            System.out.println("2 - pre vyhladanie clena podla id");
             System.out.println("3 - pre ukoncenie programu");
             int userInput = getCorrectInt(scanner, "Zadaj volbu: ");
 
             switch (userInput) {
                 case 1:
+                    Member member = createNewMember();
+                    if (memberSet.contains(member)) {
+                        System.out.println("Clen s tymto ID uz existuje");
+                        System.out.println("Zadanie zopakuj\n");
+                    } else {
+                        memberSet.add(member);
+                        memberDatabase.put(member.getMemberId(), member);
+                        System.out.println("Uzivatel uspesne registrovany");
+                    }
                     break;
                 case 2:
+                    if (memberSet.isEmpty()) {
+                        System.out.println("Nieje registrovany ziadny uzivatel");
+                        break;
+                    }
+                    int id = getCorrectInt(scanner, "Zadaj hladane id: ");
+                    if (memberDatabase.containsKey(id)) {
+                        System.out.println(memberDatabase.get(id));
+                    } else {
+                        System.out.println("Clen so zadanym ID: " + id + " nieje v nasej databaze\n");
+                    }
                     break;
                 case 3:
                     endProgram = true;
                     break;
+                default:
+                    System.out.println("Nespravne zadanie");
             }
         }
 
-        int newMemberId = getCorrectInt(scanner, "Zadaj id: ");
-        String name = getCorrectName(scanner, "Zadaj meno: ");
-        MembershipType membership = getCorrectMembership(scanner, "Zadaj druh clenstva (BASIC, PREMIUM, VIP)");
 
+    }
 
+    public static Member createNewMember() {
+            int newMemberId = getCorrectInt(scanner, "Zadaj id: ");
+            String name = getCorrectString(scanner, "Zadaj meno: ");
+            MembershipType membership = getCorrectMembership(scanner, "Zadaj druh clenstva (BASIC, PREMIUM, VIP): ");
+            return memberFactory(name, newMemberId, membership);
+    }
+
+    public static Member memberFactory(String name, int id, MembershipType membershipType) {
+        switch (membershipType) {
+            case BASIC:
+                return new BasicMember(name, id);
+            case PREMIUM:
+                return new PremiumMember(name, id);
+            case VIP:
+                return new VipMember(name, id);
+            default:
+                throw new IllegalArgumentException("Nezname clenstvo");
+        }
     }
 
     public static int getCorrectInt(Scanner scanner, String prompt) {
@@ -180,7 +223,7 @@ public class Main {
         }
     }
 
-    public static String getCorrectName(Scanner scanner, String prompt) {
+    public static String getCorrectString(Scanner scanner, String prompt) {
         while (true) {
             System.out.print(prompt);
             String name = scanner.nextLine();
