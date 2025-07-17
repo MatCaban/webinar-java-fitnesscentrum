@@ -125,6 +125,21 @@ public class Main {
             System.out.println("Trieda: " + member.getClass().getSimpleName() + ",\ntoString(): " + member.toString());
         }
 
+        System.out.println("\n=== ZORADENIE PODLA MENA ===");
+        List<Member> memberListToSort = new ArrayList<>(Arrays.asList(basicMember1, basicMember2, basicMember3, premiumMember1, vipMember1));
+        System.out.println("\nLis pred zoradenim: ");
+        for (Member member: memberListToSort) {
+            System.out.println(member);
+        }
+        System.out.println("\nList po zoradeni: ");
+        Collections.sort(memberListToSort);
+        for (Member member: memberListToSort) {
+            System.out.println(member);
+        }
+
+
+
+
         System.out.println("\n=== SIMULACIA NOVEHO CLENA ===");
         Set<Member> memberSet = new HashSet<>();
         Map<Integer, Member> memberDatabase = new HashMap<>();

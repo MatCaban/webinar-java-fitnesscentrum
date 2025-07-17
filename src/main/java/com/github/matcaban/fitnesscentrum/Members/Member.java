@@ -2,7 +2,7 @@ package com.github.matcaban.fitnesscentrum.Members;
 
 import java.util.Objects;
 
-public abstract class Member {
+public abstract class Member implements Comparable<Member>{
     protected String name;
     protected int memberId;
     protected boolean isActive;
@@ -21,6 +21,10 @@ public abstract class Member {
 
     public void setMonthsActive(int monthsActive) {
         this.monthsActive = monthsActive;
+    }
+
+    public String getName(){
+        return this.name;
     }
 
     public int getMonthsActive() {
@@ -78,5 +82,10 @@ public abstract class Member {
     @Override
     public int hashCode() {
         return memberId;
+    }
+
+    @Override
+    public int compareTo(Member member){
+        return this.getName().compareTo(member.getName());
     }
 }
