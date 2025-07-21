@@ -1,10 +1,10 @@
 package com.github.matcaban.fitnesscentrum.Members;
 
 public class VipMember extends Member{
-    private final int MONTHLY_FEE = 75;
-    private final int SPA_FEE = 25;
-    private final int PERSONAL_SESSION_FEE = 15;
-    private final int MAX_GUESTS = 10;
+    private static final int MONTHLY_FEE = 75;
+    private static final int SPA_FEE = 25;
+    private static final int PERSONAL_SESSION_FEE = 15;
+    private static final int MAX_GUESTS = 10;
     private boolean hasSpaAccess;
     private int personalSessionsIncluded;
 

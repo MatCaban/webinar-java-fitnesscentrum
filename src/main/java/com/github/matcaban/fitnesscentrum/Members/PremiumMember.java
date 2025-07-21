@@ -1,9 +1,9 @@
 package com.github.matcaban.fitnesscentrum.Members;
 
 public class PremiumMember extends Member{
-    private final int MONTHLY_FEE = 45;
-    private final int MAX_GUESTS = 3;
-    private final int PERSONAL_TRAINER_FEE = 30;
+    private static final int MONTHLY_FEE = 45;
+    private static final int MAX_GUESTS = 3;
+    private static final int PERSONAL_TRAINER_FEE = 30;
     private boolean hasPersonalTrainer;
 
     public PremiumMember(String name, int memberId) {

@@ -1,8 +1,8 @@
 package com.github.matcaban.fitnesscentrum.Members;
 
 public class BasicMember extends Member{
-    private final int MONTHLY_FEE = 25;
-    private final int MAX_GUESTS = 1;
+    private static final int MONTHLY_FEE = 25;
+    private static final int MAX_GUESTS = 1;
 
     public BasicMember(String name, int memberId) {
         super(name, memberId);
